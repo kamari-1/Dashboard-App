@@ -2984,6 +2984,7 @@ export const lineCustomSeries = [
     width: "2",
     marker: { visible: true, width: 10, height: 10 },
     type: "Line",
+    fill: "red",
   },
 
   {

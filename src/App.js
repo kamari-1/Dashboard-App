@@ -32,7 +32,21 @@ const App = () => {
     setThemeSettings,
     currentColor,
     currentMode,
+    setCurrentMode,
+    setCurrentColor,
   } = useStateContext();
+
+  useEffect(() => {
+    const currentThemeColor = localStorage.getItem("colorMode");
+    const currentThemeMode = localStorage.getItem("themeMode");
+    if (currentThemeColor) {
+      setCurrentColor(currentThemeColor);
+    }
+    if (currentThemeMode) {
+      setCurrentMode(currentThemeMode);
+    }
+  }, []);
+
   return (
     <div className={currentMode === "Dark" ? "dark" : ""}>
       <BrowserRouter>

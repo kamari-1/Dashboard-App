@@ -1,4 +1,3 @@
-import { click } from "@syncfusion/ej2-react-grids";
 import React, { createContext, useContext, useState } from "react";
 
 const StateContext = createContext();
@@ -49,6 +48,8 @@ export const ContextProvider = ({ children }) => {
         currentMode,
         setColor,
         setMode,
+        setCurrentColor,
+        setCurrentMode,
         themeSettings,
         setThemeSettings,
       }}
