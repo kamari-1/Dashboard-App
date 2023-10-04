@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { MdOutlineCancel } from "react-icons/md";
 import { BsCheck } from "react-icons/bs";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
@@ -6,12 +6,30 @@ import { themeColors } from "../data/dummy";
 import { useStateContext } from "../contexts/ContextProvider";
 
 const ThemeSettings = () => {
-  const { setColor, setMode, currentMode, currentColor, setThemeSettings } =
-    useStateContext();
+  const {
+    setColor,
+    setMode,
+    currentMode,
+    currentColor,
+    setThemeSettings,
+    themeSettingsRef,
+    themeOutsideClick,
+  } = useStateContext();
+
+  useEffect(() => {
+    document.addEventListener("mousedown", themeOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", themeOutsideClick);
+    };
+  });
 
   return (
     <div className="bg-half-transparent w-screen fixed nav-item top-0 right-0">
-      <div className="float-right h-screen dark:bg-secondary-dark-bg dark:text-gray-200 bg-white dark:[#484B52] w-400">
+      <div
+        ref={themeSettingsRef}
+        className="float-right h-screen dark:bg-secondary-dark-bg dark:text-gray-200 bg-white dark:[#484B52] w-400"
+      >
         <div className="flex justify-between items-center p-4 ml-4">
           <p className="font-semibold text-xl">Settings</p>
           <button

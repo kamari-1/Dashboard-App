@@ -18,9 +18,16 @@ export const ContextProvider = ({ children }) => {
   const [themeSettings, setThemeSettings] = useState(false);
 
   const iconRef = useRef();
+  const themeSettingsRef = useRef();
+
   const handleOutsideClick = (e) => {
     if (!iconRef.current.contains(e.target)) {
       setIsClicked(initialState);
+    }
+  };
+  const themeOutsideClick = (e) => {
+    if (!themeSettingsRef.current.contains(e.target)) {
+      setThemeSettings(false);
     }
   };
 
@@ -61,7 +68,9 @@ export const ContextProvider = ({ children }) => {
         themeSettings,
         setThemeSettings,
         iconRef,
+        themeSettingsRef,
         handleOutsideClick,
+        themeOutsideClick,
       }}
     >
       {children}
